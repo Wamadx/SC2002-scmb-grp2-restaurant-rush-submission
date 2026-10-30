@@ -54,4 +54,4 @@ Each stage is a separate runnable version tagged in this repository.
 Muhammad, U2521130K
 
 ## AI History
-- [Muhammad's AI history]()
+- [Muhammad's AI history](https://github.com/Wamadx/SC2002-scmb-grp2-restaurant-rush-submission/tree/muhammad-ai/ai-history)
