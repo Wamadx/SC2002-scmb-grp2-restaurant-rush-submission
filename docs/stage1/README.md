@@ -17,7 +17,7 @@ Stage 1 establishes the baseline game architecture:
 ### 1. Class Diagram
 The structural architecture adheres strictly to the **Boundary-Control-Entity (BCE)** pattern, isolating the console UI from business domain rules and control workflows.
 
-![Stage 1 Class Diagram](stage1_class_diagram.png)
+![Stage 1 Class Diagram](Stage 1 Class Diagram.png)
 
 ### 2. Sequence Diagram
 The dynamic interaction diagram captures the end-to-end turn execution lifecycle across Turns 1 to 6 (full customer arrival, ordering, cooking, serving, eating, billing, and table release) and Turn 18 (victory evaluation).
