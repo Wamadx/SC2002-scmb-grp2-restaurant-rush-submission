@@ -51,9 +51,7 @@ Each stage is a separate runnable version tagged in this repository.
 | 7 | Stage tag comparisons and the diagrams | |
 
 ## Team
-
-<!-- names + matric numbers -->
+|Muhammad | U2521130K|
 
 ## AI History
-
-<!-- Member AI branch links will be added here -->
+- [Muhammad's AI history](https://github.com/Wamadx/sc2002-scmb-grp2-restaurant-rush/tree/muhammad-ai/ai-history)
