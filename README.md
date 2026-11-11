@@ -10,10 +10,24 @@ customers and orders come first.
 
 ## Build & run
 
-<!-- Replace with your real commands once the source exists. -->
+From the repository root.
+
+macOS / Linux / Git Bash:
 ```bash
-javac -d bin src/**/*.java
+javac -d bin $(find src -name '*.java')
 java -cp bin Main
+```
+
+Windows PowerShell:
+```powershell
+javac -d bin (Get-ChildItem -Recurse -Filter *.java src | ForEach-Object FullName)
+java -cp bin Main
+```
+
+Reproducible Stage 1 runs (PowerShell):
+```powershell
+Get-Content docs/stage1/stage1-victory-input.txt | java -cp bin Main
+Get-Content docs/stage1/stage1-defeat-input.txt  | java -cp bin Main
 ```
 
 ## The three stages

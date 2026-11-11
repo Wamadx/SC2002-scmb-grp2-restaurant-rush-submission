@@ -43,9 +43,9 @@ public class GameController {
 
     private GameResult checkResult() {
         boolean enoughPaid = restaurant.getPaidCount() >= TARGET_PAID_CUSTOMERS;
-            boolean enoughRevenue = restaurant.getRevenue() >= TARGET_REVENUE;
-            double average = restaurant.getAverageSatisfaction();
+        boolean enoughRevenue = restaurant.getRevenue() >= TARGET_REVENUE;
+        double average = restaurant.getAverageSatisfaction();
         boolean happyEnough = average >= TARGET_AVERAGE_SATISFACTION;
-            return (enoughPaid && enoughRevenue && happyEnough) ? GameResult.VICTORY : GameResult.DEFEAT;
+        return (enoughPaid && enoughRevenue && happyEnough) ? GameResult.VICTORY : GameResult.DEFEAT;
     }
 }

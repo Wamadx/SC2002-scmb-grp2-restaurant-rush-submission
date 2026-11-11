@@ -29,7 +29,8 @@ public class Customer {
     public MenuItem chooseFood(Menu m) {
         List<MenuItem> items = m.getItems();
         // Deterministic rule: customer n orders (n - 1) % items.size()
-        return items.get((id - 1) % items.size());
+        String chosenName = items.get((id - 1) % items.size()).getName();
+        return m.getItem(chosenName);
     }
 
     public int getWaitingLoss() {
@@ -58,22 +59,22 @@ public class Customer {
 
     public void seatAt(Table table) {
         this.table = table;
-        this.status = CustomerStatus.SEATED;
+        setStatus(CustomerStatus.SEATED);
     }
 
     public void placeOrder(Order order) {
         this.order = order;
-        this.status = CustomerStatus.ORDERED;
+        setStatus(CustomerStatus.ORDERED);
     }
 
     public void receiveFood() {
-        this.status = CustomerStatus.SERVED;
-        this.eatingTurnsLeft = EATING_TURNS;
+        setStatus(CustomerStatus.SERVED);
+        setEatingTurnsLeft(EATING_TURNS);
     }
 
     public void startEatingIfServed() {
         if (status == CustomerStatus.SERVED) {
-            status = CustomerStatus.EATING;
+            setStatus(CustomerStatus.EATING);
         }
     }
 
@@ -81,9 +82,8 @@ public class Customer {
         if (status != CustomerStatus.EATING) {
             return;
         }
-        decrementEatingTurnsLeft();
-        if (eatingTurnsLeft <= 0) {
-            status = CustomerStatus.READY_TO_PAY;
+        if (decrementEatingTurnsLeft() <= 0) {
+            setStatus(CustomerStatus.READY_TO_PAY);
             readyToPayTurn = turn;
         }
     }
@@ -93,20 +93,28 @@ public class Customer {
     }
 
     public void markPaid() {
-        this.status = CustomerStatus.PAID;
+        setStatus(CustomerStatus.PAID);
         this.table = null;
     }
 
     public void markAbandoned() {
-        this.status = CustomerStatus.ABANDONED;
+        setStatus(CustomerStatus.ABANDONED);
         this.table = null;
+    }
+
+    public void setStatus(CustomerStatus status) {
+        this.status = status;
     }
 
     public CustomerStatus getStatus() {
         return status;
     }
 
-    private int decrementEatingTurnsLeft() {
+    public void setEatingTurnsLeft(int turns) {
+        this.eatingTurnsLeft = turns;
+    }
+
+    public int decrementEatingTurnsLeft() {
         if (eatingTurnsLeft > 0) {
             eatingTurnsLeft--;
         }

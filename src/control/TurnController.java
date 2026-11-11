@@ -122,9 +122,7 @@ public class TurnController {
         Customer customer = seated.get(pick - 1);
         Order order = restaurant.getWaiter().takeOrder(customer, restaurant.getMenu(), turn);
         restaurant.addOrder(order);
-        ui.displayMessage("Waiter takes " + customer.getLabel() + "'s order: "
-                + order.getItem().getName() + " (" + ConsoleUI.formatMoney(order.getBill())
-                + ", " + order.getItem().getPrepUnits() + " preparation unit(s)).");
+        ui.displayOrderTaken(customer, order);
         return true;
     }
 
@@ -187,9 +185,7 @@ public class TurnController {
             try {
                 double bill = payer.getOrder().getBill();
                 restaurant.getCashier().processPayment(payer, restaurant, turn);
-                ui.displayMessage("Cashier collects " + ConsoleUI.formatMoney(bill) + " from "
-                        + payer.getLabel() + ": PAID (satisfaction " + payer.getSatisfaction()
-                        + " recorded), table freed.");
+                ui.displayPayment(payer, bill);
             } catch (InvalidActionException e) {
                 ui.displayMessage("Cashier could not charge: " + e.getMessage());
             }

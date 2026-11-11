@@ -8,6 +8,7 @@ Stage 1 establishes the baseline game architecture:
 - **Game Duration:** 18 turns maximum.
 - **Resources:** 2 tables, 1 Waiter (1 task/turn), 1 Chef (1 prep unit/turn), 1 Cashier (1 payment/turn).
 - **Customers & Menu:** 6 Regular customer arrivals (turns 1, 4, 7, 10, 13, 16). 3 baseline menu items (Salad, Burger, Pasta).
+- **Customer order rule (deterministic):** customer *n* orders item index `(n − 1) mod 3` of `[Salad, Burger, Pasta]`; this makes every run reproducible.
 - **Victory Condition:** At least 4 paid customers, revenue at least $45, and average satisfaction of paid customers at least 60.
 
 ---
@@ -17,14 +18,14 @@ Stage 1 establishes the baseline game architecture:
 ### 1. Class Diagram
 The structural architecture adheres strictly to the **Boundary-Control-Entity (BCE)** pattern, isolating the console UI from business domain rules and control workflows.
 
-![Stage 1 Class Diagram](stage1_class_diagram.png)
+![Stage 1 Class Diagram](Stage%201%20Class%20Diagram.png)
 
 ### 2. Sequence Diagram
 The dynamic interaction diagram captures the end-to-end turn execution lifecycle across Turns 1 to 6 (full customer arrival, ordering, cooking, serving, eating, billing, and table release) and Turn 18 (victory evaluation).
 
 ![Stage 1 Sequence Diagram](Sequence%20Diagram.jpg)
 
-*Source Visual Paradigm project file containing both diagrams: [stage1_class diagram.vpp](stage1_class%20diagram.vpp)*
+*Source Visual Paradigm project file containing both diagrams: [stage1_class_diagram_final.vpp](stage1_class_diagram_final.vpp)*
 
 ---
 
@@ -49,7 +50,7 @@ The dynamic interaction diagram captures the end-to-end turn execution lifecycle
 
 ### Enumerations
 - `CustomerStatus` — `WAITING`, `SEATED`, `ORDERED`, `SERVED`, `EATING`, `READY_TO_PAY`, `PAID`, `ABANDONED`
-- `OrderStatus` — `PENDING`, `IN_PREPARATION`, `READY`, `SERVED`, `CANCELLED`
+- `OrderStatus` — `PENDING`, `IN_PREPARATION`, `READY`, `SERVED`, `CANCELLED`, `PAID`
 - `GameResult` — `VICTORY`, `DEFEAT`
 
 ---
@@ -65,6 +66,8 @@ The dynamic interaction diagram captures the end-to-end turn execution lifecycle
 | **Turn 5** | Eating turn elapses (`decrementEatingTurnsLeft()`). | Customer `EATING` $\to$ `READY_TO_PAY`. |
 | **Turn 6** | `cashier` automatically collects bill ($18.00), records satisfaction (76), and releases Table 1. | Customer & Order `PAID`. Table freed. Revenue $+=\$18.00$. |
 | **Turn 18** | `GameController.checkResult()` validates win conditions ($\ge 4$ paid, $\ge \$45$, $\ge 60$ avg sat). | `VICTORY` displayed via `ConsoleUI`. |
+
+**End-of-turn metrics:** the "served count" is cumulative — every customer served so far, including those now eating, ready to pay, or already paid.
 
 ---
 
@@ -109,4 +112,3 @@ Stage 1 includes scripted test inputs to verify both game outcomes:
   ```bash
   java -cp bin Main --replay < docs/stage1/stage1-defeat-input.txt
   ```
-

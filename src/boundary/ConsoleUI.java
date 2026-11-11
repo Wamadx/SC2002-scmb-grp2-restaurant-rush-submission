@@ -60,6 +60,18 @@ public class ConsoleUI {
         System.out.println(message);
     }
 
+    public void displayOrderTaken(Customer customer, Order order) {
+        displayMessage("Waiter takes " + customer.getLabel() + "'s order: "
+                + order.getItem().getName() + " (" + formatMoney(order.getBill())
+                + ", " + order.getItem().getPrepUnits() + " preparation unit(s)).");
+    }
+
+    public void displayPayment(Customer customer, double bill) {
+        displayMessage("Cashier collects " + formatMoney(bill) + " from "
+                + customer.getLabel() + ": PAID (satisfaction " + customer.getSatisfaction()
+                + " recorded), table freed.");
+    }
+
     public void displayWelcome() {
         System.out.println(LINE);
         System.out.println(" RESTAURANT RUSH - Stage 1");

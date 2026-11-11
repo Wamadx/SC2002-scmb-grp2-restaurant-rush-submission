@@ -62,8 +62,26 @@ public class Restaurant {
         return null;
     }
 
+    public Table getTable(int id) {
+        for (Table table : tables) {
+            if (table.getId() == id) {
+                return table;
+            }
+        }
+        return null;
+    }
+
     public void addOrder(Order order) {
         orders.add(order);
+    }
+
+    public Order getOrder(int id) {
+        for (Order order : orders) {
+            if (order.getId() == id) {
+                return order;
+            }
+        }
+        return null;
     }
 
     public void recordPayment(Customer customer) {
@@ -157,6 +175,8 @@ public class Restaurant {
         return count;
     }
 
+    // Cumulative: every customer served so far, including those now eating,
+    // ready to pay, or already paid.
     public int getServedCount() {
         int count = 0;
         for (Customer c : customers) {
@@ -217,6 +237,10 @@ public class Restaurant {
 
     public double getRevenue() {
         return revenue;
+    }
+
+    public List<Customer> getPaidCustomers() {
+        return Collections.unmodifiableList(paidCustomers);
     }
 
     public int getPaidCount() {

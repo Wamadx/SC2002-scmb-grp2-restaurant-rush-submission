@@ -1,7 +1,6 @@
 package entity;
 
 import control.InvalidActionException;
-import enums.OrderStatus;
 
 // The chef advances one order by one step each turn.
 public class Chef extends Staff {
