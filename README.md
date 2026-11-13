@@ -65,7 +65,8 @@ Each stage is a separate runnable version tagged in this repository.
 | 7 | Stage tag comparisons and the diagrams | |
 
 ## Team
-Muhammad, U2521130K
+Muhammad         | U2521130K
+Navya Kavasker   | U2522369H
 
 ## AI History
 - [Muhammad's AI history](https://github.com/Wamadx/SC2002-scmb-grp2-restaurant-rush-submission/tree/muhammad-ai/ai-history)
