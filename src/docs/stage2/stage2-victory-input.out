@@ -1,0 +1,661 @@
+==============================================================
+ RESTAURANT RUSH - Stage 2
+==============================================================
+ You are the manager. 18 turns, 2 tables, 1 Waiter, 1 Chef, 1 Cashier.
+ Customers arrive on turns 1, 4, 7, 10, 13 and 16 (turn 4 is a VIP, turn 10 a Critic).
+ Menu: Salad $9.00 (1 unit), Burger $15.00 (1 unit), Pasta $18.00 (2 units).
+ Win: at least 4 paid customers, revenue at least $45.00, average satisfaction at least 60.
+
+==============================================================
+ TURN 1 / 18
+==============================================================
+>> Customer 1 (Regular) arrives and joins the waiting queue (satisfaction 100).
+ Revenue: $0.00    Avg satisfaction (paid): N/A
+ Waiting queue: Customer 1 (Regular) (sat 100)
+ Table 1: (free)
+ Table 2: (free)
+ Staff tasks available:
+   Waiter : seat (1 waiting, table free) | take order (0) | serve (0 READY)
+   Chef   : orders to prepare (0)
+   Cashier: automatic, 0 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: No seated customer is waiting to order. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Seat which customer at Table 1?
+  1. Customer 1 (Regular) (satisfaction 100)
+  0. Back
+> Please enter a number from 0 to 1.
+> Waiter seats Customer 1 (Regular) at Table 1.
+Chef has no order to prepare and waits.
+--------------------------------------------------------------
+ End of turn 1 | served: 0 | unhappy departures: 0 | revenue: $0.00 | avg satisfaction: N/A | turns used: 1/18
+
+==============================================================
+ TURN 2 / 18
+==============================================================
+ Revenue: $0.00    Avg satisfaction (paid): N/A
+ Waiting queue: (empty)
+ Table 1: Customer 1 (Regular)  sat 92  SEATED
+ Table 2: (free)
+ Staff tasks available:
+   Waiter : seat (0 waiting, table free) | take order (1) | serve (0 READY)
+   Chef   : orders to prepare (0)
+   Cashier: automatic, 0 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Take whose order?
+  1. Customer 1 (Regular) at Table 1 (satisfaction 92)
+  0. Back
+> Please enter a number from 0 to 1.
+> Please enter a number from 0 to 1.
+> Waiter takes Customer 1 (Regular)'s order: Salad ($9.00, 1 preparation unit(s)).
+Chef - advance which order by one unit?
+  1. Order #101 Salad for Customer 1 (Regular) (0/1 units done)
+  0. Wait
+> Chef works on Order #101: READY (can be served next turn).
+--------------------------------------------------------------
+ End of turn 2 | served: 0 | unhappy departures: 0 | revenue: $0.00 | avg satisfaction: N/A | turns used: 2/18
+
+==============================================================
+ TURN 3 / 18
+==============================================================
+ Revenue: $0.00    Avg satisfaction (paid): N/A
+ Waiting queue: (empty)
+ Table 1: Customer 1 (Regular)  sat 84  ORDERED  | Order #101 Salad 1/1 READY
+ Table 2: (free)
+ Staff tasks available:
+   Waiter : seat (0 waiting, table free) | take order (0) | serve (1 READY)
+   Chef   : orders to prepare (0)
+   Cashier: automatic, 0 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: No customer is waiting in the queue. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: No customer is waiting in the queue. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Serve which order?
+  1. Order #101 Salad for Customer 1 (Regular)
+  0. Back
+> Please enter a number from 0 to 1.
+> Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Serve which order?
+  1. Order #101 Salad for Customer 1 (Regular)
+  0. Back
+> Please enter a number from 0 to 1.
+> Waiter serves Order #101 to Customer 1 (Regular): SERVED.
+Chef has no order to prepare and waits.
+--------------------------------------------------------------
+ End of turn 3 | served: 1 | unhappy departures: 0 | revenue: $0.00 | avg satisfaction: N/A | turns used: 3/18
+
+==============================================================
+ TURN 4 / 18
+==============================================================
+>> Customer 2 (VIP) arrives and joins the waiting queue (satisfaction 100).
+ Revenue: $0.00    Avg satisfaction (paid): N/A
+ Waiting queue: Customer 2 (VIP) (sat 100)
+ Table 1: Customer 1 (Regular)  sat 84  EATING  | Order #101 Salad 1/1 SERVED
+ Table 2: (free)
+ Staff tasks available:
+   Waiter : seat (1 waiting, table free) | take order (0) | serve (0 READY)
+   Chef   : orders to prepare (0)
+   Cashier: automatic, 0 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Seat which customer at Table 2?
+  1. Customer 2 (VIP) (satisfaction 100)
+  0. Back
+> Please enter a number from 0 to 1.
+> Waiter seats Customer 2 (VIP) at Table 2.
+Chef has no order to prepare and waits.
+Customer 1 (Regular) finishes eating: READY_TO_PAY (pays next turn at the earliest).
+--------------------------------------------------------------
+ End of turn 4 | served: 1 | unhappy departures: 0 | revenue: $0.00 | avg satisfaction: N/A | turns used: 4/18
+
+==============================================================
+ TURN 5 / 18
+==============================================================
+ Revenue: $0.00    Avg satisfaction (paid): N/A
+ Waiting queue: (empty)
+ Table 1: Customer 1 (Regular)  sat 84  READY_TO_PAY  | Order #101 Salad 1/1 SERVED
+ Table 2: Customer 2 (VIP)  sat 95  SEATED
+ Staff tasks available:
+   Waiter : seat (0 waiting, no free table) | take order (1) | serve (0 READY)
+   Chef   : orders to prepare (0)
+   Cashier: automatic, 1 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Take whose order?
+  1. Customer 2 (VIP) at Table 2 (satisfaction 95)
+  0. Back
+> Please enter a number from 0 to 1.
+> Waiter takes Customer 2 (VIP)'s order: Burger ($13.50, 1 preparation unit(s)).
+Chef - advance which order by one unit?
+  1. Order #102 Burger for Customer 2 (VIP) (0/1 units done)
+  0. Wait
+> Please enter a number from 0 to 1.
+> Please enter a number from 0 to 1.
+> Please enter a number from 0 to 1.
+> Please enter a number from 0 to 1.
+> Chef waits this turn.
+Cashier collects $9.00 from Customer 1 (Regular): PAID (satisfaction 84 recorded), table freed.
+--------------------------------------------------------------
+ End of turn 5 | served: 1 | unhappy departures: 0 | revenue: $9.00 | avg satisfaction: 84.0 | turns used: 5/18
+
+==============================================================
+ TURN 6 / 18
+==============================================================
+ Revenue: $9.00    Avg satisfaction (paid): 84.0
+ Waiting queue: (empty)
+ Table 1: (free)
+ Table 2: Customer 2 (VIP)  sat 90  ORDERED  | Order #102 Burger 0/1 PENDING
+ Staff tasks available:
+   Waiter : seat (0 waiting, table free) | take order (0) | serve (0 READY)
+   Chef   : orders to prepare (1)
+   Cashier: automatic, 0 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Waiter waits this turn.
+Chef - advance which order by one unit?
+  1. Order #102 Burger for Customer 2 (VIP) (0/1 units done)
+  0. Wait
+> Chef works on Order #102: READY (can be served next turn).
+--------------------------------------------------------------
+ End of turn 6 | served: 1 | unhappy departures: 0 | revenue: $9.00 | avg satisfaction: 84.0 | turns used: 6/18
+
+==============================================================
+ TURN 7 / 18
+==============================================================
+>> Customer 3 (Regular) arrives and joins the waiting queue (satisfaction 100).
+ Revenue: $9.00    Avg satisfaction (paid): 84.0
+ Waiting queue: Customer 3 (Regular) (sat 100)
+ Table 1: (free)
+ Table 2: Customer 2 (VIP)  sat 85  ORDERED  | Order #102 Burger 1/1 READY
+ Staff tasks available:
+   Waiter : seat (1 waiting, table free) | take order (0) | serve (1 READY)
+   Chef   : orders to prepare (0)
+   Cashier: automatic, 0 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Serve which order?
+  1. Order #102 Burger for Customer 2 (VIP)
+  0. Back
+> Waiter serves Order #102 to Customer 2 (VIP): SERVED.
+Chef has no order to prepare and waits.
+--------------------------------------------------------------
+ End of turn 7 | served: 2 | unhappy departures: 0 | revenue: $9.00 | avg satisfaction: 84.0 | turns used: 7/18
+
+==============================================================
+ TURN 8 / 18
+==============================================================
+ Revenue: $9.00    Avg satisfaction (paid): 84.0
+ Waiting queue: Customer 3 (Regular) (sat 92)
+ Table 1: (free)
+ Table 2: Customer 2 (VIP)  sat 85  EATING  | Order #102 Burger 1/1 SERVED
+ Staff tasks available:
+   Waiter : seat (1 waiting, table free) | take order (0) | serve (0 READY)
+   Chef   : orders to prepare (0)
+   Cashier: automatic, 0 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Seat which customer at Table 1?
+  1. Customer 3 (Regular) (satisfaction 92)
+  0. Back
+> Please enter a number from 0 to 1.
+> Waiter seats Customer 3 (Regular) at Table 1.
+Chef has no order to prepare and waits.
+Customer 2 (VIP) finishes eating: READY_TO_PAY (pays next turn at the earliest).
+--------------------------------------------------------------
+ End of turn 8 | served: 2 | unhappy departures: 0 | revenue: $9.00 | avg satisfaction: 84.0 | turns used: 8/18
+
+==============================================================
+ TURN 9 / 18
+==============================================================
+ Revenue: $9.00    Avg satisfaction (paid): 84.0
+ Waiting queue: (empty)
+ Table 1: Customer 3 (Regular)  sat 84  SEATED
+ Table 2: Customer 2 (VIP)  sat 85  READY_TO_PAY  | Order #102 Burger 1/1 SERVED
+ Staff tasks available:
+   Waiter : seat (0 waiting, no free table) | take order (1) | serve (0 READY)
+   Chef   : orders to prepare (0)
+   Cashier: automatic, 1 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Take whose order?
+  1. Customer 3 (Regular) at Table 1 (satisfaction 84)
+  0. Back
+> Waiter takes Customer 3 (Regular)'s order: Pasta ($18.00, 2 preparation unit(s)).
+Chef - advance which order by one unit?
+  1. Order #103 Pasta for Customer 3 (Regular) (0/2 units done)
+  0. Wait
+> Chef waits this turn.
+Cashier collects $13.50 from Customer 2 (VIP): PAID (satisfaction 85 recorded), table freed.
+--------------------------------------------------------------
+ End of turn 9 | served: 2 | unhappy departures: 0 | revenue: $22.50 | avg satisfaction: 84.5 | turns used: 9/18
+
+==============================================================
+ TURN 10 / 18
+==============================================================
+>> Customer 4 (Critic) arrives and joins the waiting queue (satisfaction 100).
+ Revenue: $22.50    Avg satisfaction (paid): 84.5
+ Waiting queue: Customer 4 (Critic) (sat 100)
+ Table 1: Customer 3 (Regular)  sat 76  ORDERED  | Order #103 Pasta 0/2 PENDING
+ Table 2: (free)
+ Staff tasks available:
+   Waiter : seat (1 waiting, table free) | take order (0) | serve (0 READY)
+   Chef   : orders to prepare (1)
+   Cashier: automatic, 0 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: No seated customer is waiting to order. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: No order is READY to serve. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Seat which customer at Table 2?
+  1. Customer 4 (Critic) (satisfaction 100)
+  0. Back
+> Waiter seats Customer 4 (Critic) at Table 2.
+Chef - advance which order by one unit?
+  1. Order #103 Pasta for Customer 3 (Regular) (0/2 units done)
+  0. Wait
+> Chef works on Order #103: 1/2 units done.
+--------------------------------------------------------------
+ End of turn 10 | served: 2 | unhappy departures: 0 | revenue: $22.50 | avg satisfaction: 84.5 | turns used: 10/18
+
+==============================================================
+ TURN 11 / 18
+==============================================================
+ Revenue: $22.50    Avg satisfaction (paid): 84.5
+ Waiting queue: (empty)
+ Table 1: Customer 3 (Regular)  sat 68  ORDERED  | Order #103 Pasta 1/2 IN_PREPARATION
+ Table 2: Customer 4 (Critic)  sat 88  SEATED
+ Staff tasks available:
+   Waiter : seat (0 waiting, no free table) | take order (1) | serve (0 READY)
+   Chef   : orders to prepare (1)
+   Cashier: automatic, 0 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Waiter waits this turn.
+Chef - advance which order by one unit?
+  1. Order #103 Pasta for Customer 3 (Regular) (1/2 units done)
+  0. Wait
+> Chef works on Order #103: READY (can be served next turn).
+--------------------------------------------------------------
+ End of turn 11 | served: 2 | unhappy departures: 0 | revenue: $22.50 | avg satisfaction: 84.5 | turns used: 11/18
+
+==============================================================
+ TURN 12 / 18
+==============================================================
+ Revenue: $22.50    Avg satisfaction (paid): 84.5
+ Waiting queue: (empty)
+ Table 1: Customer 3 (Regular)  sat 60  ORDERED  | Order #103 Pasta 2/2 READY
+ Table 2: Customer 4 (Critic)  sat 76  SEATED
+ Staff tasks available:
+   Waiter : seat (0 waiting, no free table) | take order (1) | serve (1 READY)
+   Chef   : orders to prepare (0)
+   Cashier: automatic, 0 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Take whose order?
+  1. Customer 4 (Critic) at Table 2 (satisfaction 76)
+  0. Back
+> Please enter a number from 0 to 1.
+> Waiter takes Customer 4 (Critic)'s order: Pasta ($18.00, 2 preparation unit(s)).
+Chef - advance which order by one unit?
+  1. Order #104 Pasta for Customer 4 (Critic) (0/2 units done)
+  0. Wait
+> Please enter a number from 0 to 1.
+> Chef works on Order #104: 1/2 units done.
+--------------------------------------------------------------
+ End of turn 12 | served: 2 | unhappy departures: 0 | revenue: $22.50 | avg satisfaction: 84.5 | turns used: 12/18
+
+==============================================================
+ TURN 13 / 18
+==============================================================
+>> Customer 5 (Regular) arrives and joins the waiting queue (satisfaction 100).
+ Revenue: $22.50    Avg satisfaction (paid): 84.5
+ Waiting queue: Customer 5 (Regular) (sat 100)
+ Table 1: Customer 3 (Regular)  sat 52  ORDERED  | Order #103 Pasta 2/2 READY
+ Table 2: Customer 4 (Critic)  sat 64  ORDERED  | Order #104 Pasta 1/2 IN_PREPARATION
+ Staff tasks available:
+   Waiter : seat (1 waiting, no free table) | take order (0) | serve (1 READY)
+   Chef   : orders to prepare (1)
+   Cashier: automatic, 0 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: No seated customer is waiting to order. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: All tables are occupied. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: No seated customer is waiting to order. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: All tables are occupied. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: No seated customer is waiting to order. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: All tables are occupied. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: All tables are occupied. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: No seated customer is waiting to order. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Serve which order?
+  1. Order #103 Pasta for Customer 3 (Regular)
+  0. Back
+> Waiter serves Order #103 to Customer 3 (Regular): SERVED.
+Chef - advance which order by one unit?
+  1. Order #104 Pasta for Customer 4 (Critic) (1/2 units done)
+  0. Wait
+> Chef works on Order #104: READY (can be served next turn).
+--------------------------------------------------------------
+ End of turn 13 | served: 3 | unhappy departures: 0 | revenue: $22.50 | avg satisfaction: 84.5 | turns used: 13/18
+
+==============================================================
+ TURN 14 / 18
+==============================================================
+ Revenue: $22.50    Avg satisfaction (paid): 84.5
+ Waiting queue: Customer 5 (Regular) (sat 92)
+ Table 1: Customer 3 (Regular)  sat 52  EATING  | Order #103 Pasta 2/2 SERVED
+ Table 2: Customer 4 (Critic)  sat 52  ORDERED  | Order #104 Pasta 2/2 READY
+ Staff tasks available:
+   Waiter : seat (1 waiting, no free table) | take order (0) | serve (1 READY)
+   Chef   : orders to prepare (0)
+   Cashier: automatic, 0 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: All tables are occupied. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: All tables are occupied. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: No seated customer is waiting to order. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: All tables are occupied. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: All tables are occupied. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: All tables are occupied. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: All tables are occupied. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: No seated customer is waiting to order. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Serve which order?
+  1. Order #104 Pasta for Customer 4 (Critic)
+  0. Back
+> Please enter a number from 0 to 1.
+> Waiter serves Order #104 to Customer 4 (Critic): SERVED.
+Chef has no order to prepare and waits.
+Customer 3 (Regular) finishes eating: READY_TO_PAY (pays next turn at the earliest).
+--------------------------------------------------------------
+ End of turn 14 | served: 4 | unhappy departures: 0 | revenue: $22.50 | avg satisfaction: 84.5 | turns used: 14/18
+
+==============================================================
+ TURN 15 / 18
+==============================================================
+ Revenue: $22.50    Avg satisfaction (paid): 84.5
+ Waiting queue: Customer 5 (Regular) (sat 84)
+ Table 1: Customer 3 (Regular)  sat 52  READY_TO_PAY  | Order #103 Pasta 2/2 SERVED
+ Table 2: Customer 4 (Critic)  sat 52  EATING  | Order #104 Pasta 2/2 SERVED
+ Staff tasks available:
+   Waiter : seat (1 waiting, no free table) | take order (0) | serve (0 READY)
+   Chef   : orders to prepare (0)
+   Cashier: automatic, 1 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: All tables are occupied. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: All tables are occupied. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Waiter waits this turn.
+Chef has no order to prepare and waits.
+Cashier collects $18.00 from Customer 3 (Regular): PAID (satisfaction 52 recorded), table freed.
+Customer 4 (Critic) finishes eating: READY_TO_PAY (pays next turn at the earliest).
+--------------------------------------------------------------
+ End of turn 15 | served: 4 | unhappy departures: 0 | revenue: $40.50 | avg satisfaction: 73.7 | turns used: 15/18
+
+==============================================================
+ TURN 16 / 18
+==============================================================
+>> Customer 6 (Regular) arrives and joins the waiting queue (satisfaction 100).
+ Revenue: $40.50    Avg satisfaction (paid): 73.7
+ Waiting queue: Customer 5 (Regular) (sat 76)  Customer 6 (Regular) (sat 100)
+ Table 1: (free)
+ Table 2: Customer 4 (Critic)  sat 52  READY_TO_PAY  | Order #104 Pasta 2/2 SERVED
+ Staff tasks available:
+   Waiter : seat (2 waiting, table free) | take order (0) | serve (0 READY)
+   Chef   : orders to prepare (0)
+   Cashier: automatic, 1 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Invalid choice: No seated customer is waiting to order. Please choose again.
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Seat which customer at Table 1?
+  1. Customer 5 (Regular) (satisfaction 76)
+  2. Customer 6 (Regular) (satisfaction 100)
+  0. Back
+> Waiter seats Customer 5 (Regular) at Table 1.
+Chef has no order to prepare and waits.
+Cashier collects $18.00 from Customer 4 (Critic): PAID (satisfaction 52 recorded), table freed.
+--------------------------------------------------------------
+ End of turn 16 | served: 4 | unhappy departures: 0 | revenue: $58.50 | avg satisfaction: 68.3 | turns used: 16/18
+
+==============================================================
+ TURN 17 / 18
+==============================================================
+ Revenue: $58.50    Avg satisfaction (paid): 68.3
+ Waiting queue: Customer 6 (Regular) (sat 92)
+ Table 1: Customer 5 (Regular)  sat 68  SEATED
+ Table 2: (free)
+ Staff tasks available:
+   Waiter : seat (1 waiting, table free) | take order (1) | serve (0 READY)
+   Chef   : orders to prepare (0)
+   Cashier: automatic, 0 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Waiter waits this turn.
+Chef has no order to prepare and waits.
+--------------------------------------------------------------
+ End of turn 17 | served: 4 | unhappy departures: 0 | revenue: $58.50 | avg satisfaction: 68.3 | turns used: 17/18
+
+==============================================================
+ TURN 18 / 18
+==============================================================
+ Revenue: $58.50    Avg satisfaction (paid): 68.3
+ Waiting queue: Customer 6 (Regular) (sat 84)
+ Table 1: Customer 5 (Regular)  sat 60  SEATED
+ Table 2: (free)
+ Staff tasks available:
+   Waiter : seat (1 waiting, table free) | take order (1) | serve (0 READY)
+   Chef   : orders to prepare (0)
+   Cashier: automatic, 0 customer(s) READY_TO_PAY
+--------------------------------------------------------------
+Waiter - choose ONE task:
+  1. Seat a waiting customer
+  2. Take a seated customer's order
+  3. Serve a READY order
+  0. Wait
+> Seat which customer at Table 2?
+  1. Customer 6 (Regular) (satisfaction 84)
+  0. Back
+> Please enter a number from 0 to 1.
+> Waiter seats Customer 6 (Regular) at Table 2.
+Chef has no order to prepare and waits.
+--------------------------------------------------------------
+ End of turn 18 | served: 4 | unhappy departures: 0 | revenue: $58.50 | avg satisfaction: 68.3 | turns used: 18/18
+
+==============================================================
+ GAME OVER - VICTORY
+==============================================================
+ Paid customers    : 4 (target 4)
+ Revenue           : $58.50 (target $45.00)
+ Avg satisfaction  : 68.3 (target 60)
+ Unhappy departures: 0
+ Congratulations, you met all three targets!
