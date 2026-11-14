@@ -42,11 +42,22 @@ public class TurnController {
 
     private void processArrival(int turn) {
         if (ARRIVAL_TURNS.contains(turn)) {
-            Customer customer = new Customer(nextCustomerId++, turn);
+            Customer customer = createArrival(nextCustomerId++, turn);
             restaurant.addArrival(customer);
             ui.displayMessage(">> " + customer.getLabel()
                     + " arrives and joins the waiting queue (satisfaction 100).");
         }
+    }
+
+    // vip come at 4 and critic come at 10, rest are normal
+    private Customer createArrival(int id, int turn) {
+        if (turn == 4) {
+            return new VIPCustomer(id, turn);
+        }
+        if (turn == 10) {
+            return new CriticCustomer(id, turn);
+        }
+        return new Customer(id, turn);
     }
 
     private void processWaiterAction(int turn) {
@@ -122,7 +133,9 @@ public class TurnController {
         Customer customer = seated.get(pick - 1);
         Order order = restaurant.getWaiter().takeOrder(customer, restaurant.getMenu(), turn);
         restaurant.addOrder(order);
-        ui.displayOrderTaken(customer, order);
+        ui.displayMessage("Waiter takes " + customer.getLabel() + "'s order: "
+                + order.getItem().getName() + " (" + ConsoleUI.formatMoney(order.getBill())
+                + ", " + order.getItem().getPrepUnits() + " preparation unit(s)).");
         return true;
     }
 
@@ -183,9 +196,11 @@ public class TurnController {
         Customer payer = restaurant.findNextCustomerToPay(turn);
         if (payer != null) {
             try {
-                double bill = payer.getOrder().getBill();
+                int bill = payer.getOrder().getBill();
                 restaurant.getCashier().processPayment(payer, restaurant, turn);
-                ui.displayPayment(payer, bill);
+                ui.displayMessage("Cashier collects " + ConsoleUI.formatMoney(bill) + " from "
+                        + payer.getLabel() + ": PAID (satisfaction " + payer.getSatisfaction()
+                        + " recorded), table freed.");
             } catch (InvalidActionException e) {
                 ui.displayMessage("Cashier could not charge: " + e.getMessage());
             }

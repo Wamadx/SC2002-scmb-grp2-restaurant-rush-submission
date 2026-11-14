@@ -29,12 +29,20 @@ public class Customer {
     public MenuItem chooseFood(Menu m) {
         List<MenuItem> items = m.getItems();
         // Deterministic rule: customer n orders (n - 1) % items.size()
-        String chosenName = items.get((id - 1) % items.size()).getName();
-        return m.getItem(chosenName);
+        return items.get((id - 1) % items.size());
+    }
+
+    public String getTypeName() {
+        return "Regular";
     }
 
     public int getWaitingLoss() {
         return REGULAR_WAITING_LOSS;
+    }
+
+    // Regular customers pay the full menu price. VIP customers override this.
+    public int calculateBill(MenuItem item) {
+        return item.getPrice();
     }
 
     public boolean isWaitingForService() {
@@ -59,22 +67,22 @@ public class Customer {
 
     public void seatAt(Table table) {
         this.table = table;
-        setStatus(CustomerStatus.SEATED);
+        this.status = CustomerStatus.SEATED;
     }
 
     public void placeOrder(Order order) {
         this.order = order;
-        setStatus(CustomerStatus.ORDERED);
+        this.status = CustomerStatus.ORDERED;
     }
 
     public void receiveFood() {
-        setStatus(CustomerStatus.SERVED);
-        setEatingTurnsLeft(EATING_TURNS);
+        this.status = CustomerStatus.SERVED;
+        this.eatingTurnsLeft = EATING_TURNS;
     }
 
     public void startEatingIfServed() {
         if (status == CustomerStatus.SERVED) {
-            setStatus(CustomerStatus.EATING);
+            status = CustomerStatus.EATING;
         }
     }
 
@@ -82,8 +90,9 @@ public class Customer {
         if (status != CustomerStatus.EATING) {
             return;
         }
-        if (decrementEatingTurnsLeft() <= 0) {
-            setStatus(CustomerStatus.READY_TO_PAY);
+        decrementEatingTurnsLeft();
+        if (eatingTurnsLeft <= 0) {
+            status = CustomerStatus.READY_TO_PAY;
             readyToPayTurn = turn;
         }
     }
@@ -93,28 +102,20 @@ public class Customer {
     }
 
     public void markPaid() {
-        setStatus(CustomerStatus.PAID);
+        this.status = CustomerStatus.PAID;
         this.table = null;
     }
 
     public void markAbandoned() {
-        setStatus(CustomerStatus.ABANDONED);
+        this.status = CustomerStatus.ABANDONED;
         this.table = null;
-    }
-
-    public void setStatus(CustomerStatus status) {
-        this.status = status;
     }
 
     public CustomerStatus getStatus() {
         return status;
     }
 
-    public void setEatingTurnsLeft(int turns) {
-        this.eatingTurnsLeft = turns;
-    }
-
-    public int decrementEatingTurnsLeft() {
+    private int decrementEatingTurnsLeft() {
         if (eatingTurnsLeft > 0) {
             eatingTurnsLeft--;
         }
@@ -126,7 +127,7 @@ public class Customer {
     }
 
     public String getLabel() {
-        return "Customer " + id;
+        return "Customer " + id + " (" + getTypeName() + ")";
     }
 
     public int getSatisfaction() {

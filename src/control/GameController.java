@@ -10,7 +10,7 @@ public class GameController {
     public static final int MAX_TURNS = 18;
     public static final int TABLE_COUNT = 2;
     public static final int TARGET_PAID_CUSTOMERS = 4;
-    public static final double TARGET_REVENUE = 45.0;
+    public static final int TARGET_REVENUE = 4500;
     public static final int TARGET_AVERAGE_SATISFACTION = 60;
 
     private ConsoleUI ui;
@@ -43,9 +43,9 @@ public class GameController {
 
     private GameResult checkResult() {
         boolean enoughPaid = restaurant.getPaidCount() >= TARGET_PAID_CUSTOMERS;
-        boolean enoughRevenue = restaurant.getRevenue() >= TARGET_REVENUE;
-        double average = restaurant.getAverageSatisfaction();
+            boolean enoughRevenue = restaurant.getRevenue() >= TARGET_REVENUE;
+            double average = restaurant.getAverageSatisfaction();
         boolean happyEnough = average >= TARGET_AVERAGE_SATISFACTION;
-        return (enoughPaid && enoughRevenue && happyEnough) ? GameResult.VICTORY : GameResult.DEFEAT;
+            return (enoughPaid && enoughRevenue && happyEnough) ? GameResult.VICTORY : GameResult.DEFEAT;
     }
 }

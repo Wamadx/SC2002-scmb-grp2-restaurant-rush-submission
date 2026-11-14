@@ -2,12 +2,12 @@ package entity;
 
 public class MenuItem {
     private String name;
-    private double price;
+    private int priceCents;
     private int prepUnits;
 
-    public MenuItem(String name, double price, int prepUnits) {
+    public MenuItem(String name, int priceCents, int prepUnits) {
         this.name = name;
-        this.price = price;
+        this.priceCents = priceCents;
         this.prepUnits = prepUnits;
     }
 
@@ -15,8 +15,9 @@ public class MenuItem {
         return name;
     }
 
-    public double getPrice() {
-        return price;
+    // Price in cents.
+    public int getPrice() {
+        return priceCents;
     }
 
     public int getPrepUnits() {

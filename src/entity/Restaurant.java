@@ -21,7 +21,7 @@ public class Restaurant {
     private List<Staff> staff;
     private List<Customer> paidCustomers;
     private List<Integer> paidSatisfactions;
-    private double revenue;
+    private int revenueCents;
     private int abandonedCount;
 
     public Restaurant(String name) {
@@ -44,7 +44,7 @@ public class Restaurant {
         this.staff = Arrays.asList(waiter, chef, cashier);
         this.paidCustomers = new ArrayList<>();
         this.paidSatisfactions = new ArrayList<>();
-        this.revenue = 0.0;
+        this.revenueCents = 0;
         this.abandonedCount = 0;
     }
 
@@ -62,26 +62,8 @@ public class Restaurant {
         return null;
     }
 
-    public Table getTable(int id) {
-        for (Table table : tables) {
-            if (table.getId() == id) {
-                return table;
-            }
-        }
-        return null;
-    }
-
     public void addOrder(Order order) {
         orders.add(order);
-    }
-
-    public Order getOrder(int id) {
-        for (Order order : orders) {
-            if (order.getId() == id) {
-                return order;
-            }
-        }
-        return null;
     }
 
     public void recordPayment(Customer customer) {
@@ -89,7 +71,7 @@ public class Restaurant {
             return;
         }
         addRevenue(customer.getOrder().getBill());
-        customer.getOrder().setStatus(OrderStatus.PAID);
+        customer.getOrder().markPaid();
         if (customer.getTable() != null) {
             customer.getTable().release();
         }
@@ -107,7 +89,7 @@ public class Restaurant {
             customer.getTable().release();
         }
         if (customer.getOrder() != null) {
-            customer.getOrder().setStatus(OrderStatus.CANCELLED);
+            customer.getOrder().cancel();
         }
         customer.markAbandoned();
         abandonedCount++;
@@ -175,8 +157,6 @@ public class Restaurant {
         return count;
     }
 
-    // Cumulative: every customer served so far, including those now eating,
-    // ready to pay, or already paid.
     public int getServedCount() {
         int count = 0;
         for (Customer c : customers) {
@@ -198,8 +178,8 @@ public class Restaurant {
         return (double) sum / paidSatisfactions.size();
     }
 
-    public void addRevenue(double amount) {
-        this.revenue += amount;
+    public void addRevenue(int amount) {
+        this.revenueCents += amount;
     }
 
     public void addPaidCustomer(Customer customer) {
@@ -235,12 +215,9 @@ public class Restaurant {
         return cashier;
     }
 
-    public double getRevenue() {
-        return revenue;
-    }
-
-    public List<Customer> getPaidCustomers() {
-        return Collections.unmodifiableList(paidCustomers);
+    // Revenue in cents.
+    public int getRevenue() {
+        return revenueCents;
     }
 
     public int getPaidCount() {

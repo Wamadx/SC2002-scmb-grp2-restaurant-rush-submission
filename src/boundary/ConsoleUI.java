@@ -60,24 +60,12 @@ public class ConsoleUI {
         System.out.println(message);
     }
 
-    public void displayOrderTaken(Customer customer, Order order) {
-        displayMessage("Waiter takes " + customer.getLabel() + "'s order: "
-                + order.getItem().getName() + " (" + formatMoney(order.getBill())
-                + ", " + order.getItem().getPrepUnits() + " preparation unit(s)).");
-    }
-
-    public void displayPayment(Customer customer, double bill) {
-        displayMessage("Cashier collects " + formatMoney(bill) + " from "
-                + customer.getLabel() + ": PAID (satisfaction " + customer.getSatisfaction()
-                + " recorded), table freed.");
-    }
-
     public void displayWelcome() {
         System.out.println(LINE);
-        System.out.println(" RESTAURANT RUSH - Stage 1");
+        System.out.println(" RESTAURANT RUSH - Stage 2");
         System.out.println(LINE);
         System.out.println(" You are the manager. 18 turns, 2 tables, 1 Waiter, 1 Chef, 1 Cashier.");
-        System.out.println(" Customers arrive on turns 1, 4, 7, 10, 13 and 16.");
+        System.out.println(" Customers arrive on turns 1, 4, 7, 10, 13 and 16 (turn 4 is a VIP, turn 10 a Critic).");
         System.out.println(" Menu: Salad $9.00 (1 unit), Burger $15.00 (1 unit), Pasta $18.00 (2 units).");
         System.out.println(" Win: at least " + GameController.TARGET_PAID_CUSTOMERS + " paid customers, revenue at least "
                 + formatMoney(GameController.TARGET_REVENUE) + ", average satisfaction at least "
@@ -157,8 +145,9 @@ public class ConsoleUI {
         return text;
     }
 
-    public static String formatMoney(double amount) {
-        return String.format("$%.2f", amount);
+    // Amounts are kept in cents and shown as dollars with two decimals.
+    public static String formatMoney(int cents) {
+        return String.format("$%d.%02d", cents / 100, cents % 100);
     }
 
     private static String formatAverage(double average) {

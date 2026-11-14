@@ -10,7 +10,9 @@ public class Order {
     private int progressUnits;
     private OrderStatus status;
     private int readyTurn;
+    private int billCents;
 
+    // bill calculate with order
     public Order(int id, MenuItem item, Customer owner) {
         this.id = id;
         this.item = item;
@@ -18,6 +20,7 @@ public class Order {
         this.progressUnits = 0;
         this.status = OrderStatus.PENDING;
         this.readyTurn = -1;
+        this.billCents = owner.calculateBill(item);
     }
 
     public boolean needsPreparation() {
@@ -38,7 +41,19 @@ public class Order {
         return this.status == OrderStatus.READY;
     }
 
-    public void setStatus(OrderStatus status) {
+    public void markServed() {
+        setStatus(OrderStatus.SERVED);
+    }
+
+    public void markPaid() {
+        setStatus(OrderStatus.PAID);
+    }
+
+    public void cancel() {
+        setStatus(OrderStatus.CANCELLED);
+    }
+
+    private void setStatus(OrderStatus status) {
         this.status = status;
     }
 
@@ -66,7 +81,8 @@ public class Order {
         return progressUnits;
     }
 
-    public double getBill() {
-        return item.getPrice();
+    // Bill in cents.
+    public int getBill() {
+        return billCents;
     }
 }

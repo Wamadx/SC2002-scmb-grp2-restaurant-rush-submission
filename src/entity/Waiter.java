@@ -2,7 +2,6 @@ package entity;
 
 import control.InvalidActionException;
 import enums.CustomerStatus;
-import enums.OrderStatus;
 
 // The waiter's actions: seating customers, taking orders, and serving food.
 public class Waiter extends Staff {
@@ -43,7 +42,7 @@ public class Waiter extends Staff {
         if (order.getReadyTurn() >= turn) {
             throw new InvalidActionException("Order #" + order.getId() + " became READY this turn and can only be served next turn.");
         }
-        order.setStatus(OrderStatus.SERVED);
+        order.markServed();
         order.getOwner().receiveFood();
         useTask();
         return true;
