@@ -87,9 +87,11 @@ Each stage is a separate runnable version tagged in this repository.
 | 7 | Stage tag comparisons and the diagrams | |
 
 ## Team
-Muhammad         | U2521130K
-Navya Kavasker   | U2522369H
-PI HAOLIANG      | U2522540K
+MUHAMMAD BIN MD ALI | U2521130K
+NAVYA KAVASKER      | U2522369H
+PI HAOLIANG         | U2522540K
+RINDLER MARK BARRE  |
+ZHANG SHEHAN        |
 
 ## AI History
 - [Muhammad's AI history](https://github.com/Wamadx/SC2002-scmb-grp2-restaurant-rush-submission/tree/muhammad-ai/ai-history)
