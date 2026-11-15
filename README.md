@@ -76,15 +76,14 @@ Each stage is a separate runnable version tagged in this repository.
 - **Compare:**(https://github.com/Wamadx/SC2002-scmb-grp2-restaurant-rush-submission/compare/stage-2...stage-3)
 ## Video timestamps
 
-| # | Segment | Timestamp |
+The video is 14:52 long and has four sections.
+
+| # | Section | Timestamp |
 |---|---|---|
-| 1 | Game launching from the submitted project | |
-| 2 | Meaningful manager choices, incl. a constrained-staff decision | |
-| 3 | A dish going READY → SERVED → payment | |
-| 4 | A VIP or Critic behaviour | |
-| 5 | A Stage 3 feature | |
-| 6 | One victory and one defeat | |
-| 7 | Stage tag comparisons and the diagrams | |
+| 1 | Game overview and live demonstration (Muhammad) | 00:00 – 03:02 |
+| 2 | Class diagrams and sequence diagram (Navya and Shehan) | 03:03 – 09:04 |
+| 3 | How the code works and OODP principles (Pi Haoliang and Rindler Mark Barre) | 09:05 – 13:39 |
+| 4 | Contributions and learning points (Muhammad) | 13:40 – 14:52 |
 
 ## Team
 MUHAMMAD BIN MD ALI | U2521130K
