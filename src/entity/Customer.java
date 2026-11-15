@@ -28,8 +28,9 @@ public class Customer {
 
     public MenuItem chooseFood(Menu m) {
         List<MenuItem> items = m.getItems();
-        // Deterministic rule: customer n orders (n - 1) % items.size()
-        return items.get((id - 1) % items.size());
+        // Deterministic rule (Stage 3, four menu items): customer n orders items.get(n % 4).
+        // So customers 3, 7, 11... order the combo. Critics always order Pasta (see CriticCustomer).
+        return items.get(id % items.size());
     }
 
     public String getTypeName() {
@@ -38,6 +39,10 @@ public class Customer {
 
     public int getWaitingLoss() {
         return REGULAR_WAITING_LOSS;
+    }
+
+    public void recoverSatisfaction(int pts) {
+        this.satisfaction = Math.min(MAX_SATISFACTION, this.satisfaction + pts);
     }
 
     // Regular customers pay the full menu price. VIP customers override this.

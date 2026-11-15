@@ -24,6 +24,9 @@ public class TurnController {
         ui.displayTurnHeader(turn);
         processArrival(turn);
         ui.displayStartOfTurn(turn, restaurant);
+        processHappyHourChoice(turn);
+        applyHappyHourRecovery(turn);
+        processHostAction(turn);
         processWaiterAction(turn);
         processChefAction(turn);
         processEatingAndPayment(turn);
@@ -46,6 +49,50 @@ public class TurnController {
             restaurant.addArrival(customer);
             ui.displayMessage(">> " + customer.getLabel()
                     + " arrives and joins the waiting queue (satisfaction 100).");
+        }
+    }
+
+    // Happy Hour can be switched on once per game. The manager decides at the start of a turn.
+    private void processHappyHourChoice(int turn) {
+        HappyHour happyHour = restaurant.getHappyHour();
+        if (!happyHour.canActivate()) {
+            return;
+        }
+        List<String> options = new ArrayList<>();
+        options.add("Activate Happy Hour (this turn and the next)");
+        int choice = ui.readChoice("Manager - switch on Happy Hour?", options, "No");
+        if (choice == 1) {
+            happyHour.activate(turn);
+            ui.displayMessage("Happy Hour is ON for turns " + turn + " and " + (turn + 1) + ".");
+        }
+    }
+
+    // Waiting or seated customers recover satisfaction while Happy Hour is active.
+    private void applyHappyHourRecovery(int turn) {
+        if (!restaurant.getHappyHour().isActive(turn)) {
+            return;
+        }
+        for (Customer c : restaurant.getActiveCustomers()) {
+            if (c.isWaitingForService()) {
+                c.recoverSatisfaction(HappyHour.RECOVERY);
+            }
+        }
+        ui.displayMessage("Happy Hour: waiting customers recover " + HappyHour.RECOVERY + " satisfaction.");
+    }
+
+    // The Host acts before the Waiter and seats the longest-waiting customer automatically.
+    private void processHostAction(int turn) {
+        Table table = restaurant.getFreeTable();
+        if (restaurant.getWaitingQueue().isEmpty() || table == null) {
+            ui.displayMessage("Host has nobody to seat and waits.");
+            return;
+        }
+        Customer next = restaurant.getWaitingQueue().getAll().get(0);
+        try {
+            restaurant.getHost().seatFirstInQueue(restaurant.getWaitingQueue(), table);
+            ui.displayMessage("Host seats " + next.getLabel() + " at Table " + table.getId() + ".");
+        } catch (InvalidActionException e) {
+            ui.displayMessage("Host could not seat anyone: " + e.getMessage());
         }
     }
 
@@ -131,7 +178,8 @@ public class TurnController {
             return false;
         }
         Customer customer = seated.get(pick - 1);
-        Order order = restaurant.getWaiter().takeOrder(customer, restaurant.getMenu(), turn);
+        Order order = restaurant.getWaiter().takeOrder(customer, restaurant.getMenu(), turn,
+                restaurant.getHappyHour().pricePercent(turn));
         restaurant.addOrder(order);
         ui.displayMessage("Waiter takes " + customer.getLabel() + "'s order: "
                 + order.getItem().getName() + " (" + ConsoleUI.formatMoney(order.getBill())

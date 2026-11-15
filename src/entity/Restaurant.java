@@ -18,6 +18,8 @@ public class Restaurant {
     private Waiter waiter;
     private Chef chef;
     private Cashier cashier;
+    private Host host;
+    private HappyHour happyHour;
     private List<Staff> staff;
     private List<Customer> paidCustomers;
     private List<Integer> paidSatisfactions;
@@ -41,7 +43,9 @@ public class Restaurant {
         this.waiter = new Waiter();
         this.chef = new Chef();
         this.cashier = new Cashier();
-        this.staff = Arrays.asList(waiter, chef, cashier);
+        this.host = new Host();
+        this.happyHour = new HappyHour();
+        this.staff = Arrays.asList(waiter, host, chef, cashier);
         this.paidCustomers = new ArrayList<>();
         this.paidSatisfactions = new ArrayList<>();
         this.revenueCents = 0;
@@ -213,6 +217,14 @@ public class Restaurant {
 
     public Cashier getCashier() {
         return cashier;
+    }
+
+    public Host getHost() {
+        return host;
+    }
+
+    public HappyHour getHappyHour() {
+        return happyHour;
     }
 
     // Revenue in cents.

@@ -62,11 +62,12 @@ public class ConsoleUI {
 
     public void displayWelcome() {
         System.out.println(LINE);
-        System.out.println(" RESTAURANT RUSH - Stage 2");
+        System.out.println(" RESTAURANT RUSH - Stage 3");
         System.out.println(LINE);
-        System.out.println(" You are the manager. 18 turns, 2 tables, 1 Waiter, 1 Chef, 1 Cashier.");
+        System.out.println(" You are the manager. 18 turns, 2 tables, 1 Waiter, 1 Host, 1 Chef, 1 Cashier.");
         System.out.println(" Customers arrive on turns 1, 4, 7, 10, 13 and 16 (turn 4 is a VIP, turn 10 a Critic).");
-        System.out.println(" Menu: Salad $9.00 (1 unit), Burger $15.00 (1 unit), Pasta $18.00 (2 units).");
+        System.out.println(" Menu: Salad $9.00 (1 unit), Burger $15.00 (1 unit), Pasta $18.00 (2 units),");
+        System.out.println("       Salad + Pasta Combo $24.30 (3 units). Happy Hour can be switched on once per game.");
         System.out.println(" Win: at least " + GameController.TARGET_PAID_CUSTOMERS + " paid customers, revenue at least "
                 + formatMoney(GameController.TARGET_REVENUE) + ", average satisfaction at least "
                 + GameController.TARGET_AVERAGE_SATISFACTION + ".");
@@ -88,6 +89,7 @@ public class ConsoleUI {
             queue.append(c.getLabel()).append(" (sat ").append(c.getSatisfaction()).append(")  ");
         }
         System.out.println(" Waiting queue: " + (queue.length() == 0 ? "(empty)" : queue.toString().trim()));
+        System.out.println(" Happy Hour: " + describeHappyHour(restaurant.getHappyHour(), turn));
 
         for (Table t : restaurant.getTables()) {
             if (t.isFree()) {
@@ -103,6 +105,7 @@ public class ConsoleUI {
         System.out.println("   Waiter : seat (" + waiting + " waiting, " + (freeTable ? "table free" : "no free table")
                 + ") | take order (" + restaurant.getCustomersWaitingToOrder().size()
                 + ") | serve (" + restaurant.getReadyOrders().size() + " READY)");
+        System.out.println("   Host   : seat longest-waiting customer automatically (" + waiting + " waiting, " + (freeTable ? "table free" : "no free table") + ")");
         System.out.println("   Chef   : orders to prepare (" + restaurant.getOrdersNeedingPreparation().size() + ")");
         System.out.println("   Cashier: automatic, " + restaurant.getReadyToPayCount() + " customer(s) READY_TO_PAY");
         System.out.println(THIN);
@@ -133,6 +136,13 @@ public class ConsoleUI {
         System.out.println(result == GameResult.VICTORY
                 ? " Congratulations, you met all three targets!"
                 : " Not all targets were met. Better luck next time.");
+    }
+
+    private String describeHappyHour(HappyHour happyHour, int turn) {
+        if (happyHour.isActive(turn)) {
+            return "ACTIVE, " + happyHour.remainingTurns(turn) + " turn(s) left including this one (20% off new orders)";
+        }
+        return happyHour.canActivate() ? "available (not used yet)" : "used, not active";
     }
 
     private String describeCustomer(Customer c) {

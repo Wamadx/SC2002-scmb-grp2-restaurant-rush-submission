@@ -9,9 +9,13 @@ public class Menu {
 
     public Menu() {
         this.items = new ArrayList<>();
-        this.items.add(new MenuItem("Salad", 900, 1));
-        this.items.add(new MenuItem("Burger", 1500, 1));
-        this.items.add(new MenuItem("Pasta", 1800, 2));
+        MenuItem salad = new MenuItem("Salad", 900, 1);
+        MenuItem burger = new MenuItem("Burger", 1500, 1);
+        MenuItem pasta = new MenuItem("Pasta", 1800, 2);
+        this.items.add(salad);
+        this.items.add(burger);
+        this.items.add(pasta);
+        this.items.add(new ComboMeal(salad, pasta));
     }
 
     public static Menu createStandardMenu() {

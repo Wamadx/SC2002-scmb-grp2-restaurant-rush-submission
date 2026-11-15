@@ -19,6 +19,13 @@ public class WaitingQueue {
         customers.remove(customer);
     }
 
+    // Takes a customer out of the queue and seats them. Used by both the Waiter and the Host.
+    public void moveToTable(Customer customer, Table table) {
+        customers.remove(customer);
+        table.seat(customer);
+        customer.seatAt(table);
+    }
+
     public boolean contains(Customer customer) {
         return customers.contains(customer);
     }

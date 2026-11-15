@@ -13,14 +13,14 @@ public class Order {
     private int billCents;
 
     // bill calculate with order
-    public Order(int id, MenuItem item, Customer owner) {
+    public Order(int id, MenuItem item, Customer owner, int pricePercent) {
         this.id = id;
         this.item = item;
         this.owner = owner;
         this.progressUnits = 0;
         this.status = OrderStatus.PENDING;
         this.readyTurn = -1;
-        this.billCents = owner.calculateBill(item);
+        this.billCents = Money.percentOf(owner.calculateBill(item), pricePercent);
     }
 
     public boolean needsPreparation() {

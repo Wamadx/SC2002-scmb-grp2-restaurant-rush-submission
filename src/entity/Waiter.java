@@ -15,20 +15,18 @@ public class Waiter extends Staff {
         if (table == null || !table.isFree()) {
             throw new InvalidActionException("Table is not free.");
         }
-        queue.remove(customer);
-        table.seat(customer);
-        customer.seatAt(table);
+        queue.moveToTable(customer, table);
         useTask();
         return true;
     }
 
-    public Order takeOrder(Customer customer, Menu menu, int turn) throws InvalidActionException {
+    public Order takeOrder(Customer customer, Menu menu, int turn, int pricePercent) throws InvalidActionException {
         ensureCanAct();
         if (customer.getStatus() != CustomerStatus.SEATED) {
             throw new InvalidActionException(customer.getLabel() + " must be seated without an order to place one.");
         }
         MenuItem chosenItem = customer.chooseFood(menu);
-        Order order = new Order(nextOrderId++, chosenItem, customer);
+        Order order = new Order(nextOrderId++, chosenItem, customer, pricePercent);
         customer.placeOrder(order);
         useTask();
         return order;
