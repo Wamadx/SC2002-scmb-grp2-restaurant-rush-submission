@@ -95,6 +95,5 @@ ZHANG SHEHAN        |
 ## AI History
 - [Muhammad's AI history](https://github.com/Wamadx/SC2002-scmb-grp2-restaurant-rush-submission/tree/muhammad-ai/ai-history)
 - [PI HAOLIANG's AI history](https://github.com/Wamadx/SC2002-scmb-grp2-restaurant-rush-submission/tree/PI-HAOLIANG-ai)
-- [NAVYA KAVASKER]()
+- [NAVYA KAVASKER's AI history](https://github.com/Wamadx/SC2002-scmb-grp2-restaurant-rush-submission/tree/Navya-ai)
 - [ZHANG SHEHAN's AI History](https://github.com/Wamadx/SC2002-scmb-grp2-restaurant-rush-submission/blob/ZHANG-SHEHAN-ai/Stage1/Stage_1_AI_History.pdf)
-- [RINDLER MARK BARRE]()
